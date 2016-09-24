@@ -6,10 +6,11 @@
     "init": "rm -rf ./lib && babel src --out-dir lib && gulp",
     "build": "rm -rf ./lib && babel src --out-dir lib",
     "dev-server": "webpack-dev-server --content-base src --hot --progress --inline",
-    "prod": "NODE_ENV=1 webpack && NODE_ENV=1 gulp render:html",
+    "prod": "NODE_ENV=1 webpack && gulp prod && git add ./public/js && git add *.html",
     "eslint": "eslint --cache ./ --ext .js"
   },
   "pre-commit": [
+    "prod",
     "eslint"
   ],
   "repository": {
