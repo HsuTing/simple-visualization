@@ -5,19 +5,23 @@ import {Router, Route, browserHistory, IndexRoute} from 'react-router';
 import {combineReducers, createStore} from 'redux';
 import {Provider} from 'react-redux';
 
-import reducerIndex from './../reducers/index';
+import reducerData from './../reducers/data';
 
 import Root from './../components/root';
+import Index from './../components/index';
 
 const reducers = combineReducers({
-  index: reducerIndex
+  data: reducerData
 });
-const store = createStore(reducers);
+export const store = createStore(reducers);
 
 export default (
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={Root} />
+      <Route path="/simple-visualization/" component={Root}>
+        <IndexRoute component={Index} />
+        <Route path="*" component={null} />
+      </Route>
     </Router>
   </Provider>
 );

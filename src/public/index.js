@@ -3,7 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Wrapper from './../components/radium-wrapper';
+import Wrapper from './../components/radium/wrapper';
 import Router from './../routers/index';
 
 (() => {

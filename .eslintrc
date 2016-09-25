@@ -26,6 +26,7 @@
     "indent": [2, 2, {"SwitchCase": 1}],
     "max-len": 0,
     "quote-props": ["error", "as-needed"],
+    "no-alert": "warn",
     "no-unused-vars": 0,
     "no-negated-condition": 0,
     "object-curly-spacing": [1, "never"],
