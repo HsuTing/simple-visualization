@@ -10,6 +10,7 @@ import reducerLong from './../reducers/long';
 
 import Root from './../components/root';
 import NewStroke from './../components/newStroke';
+import ShortTerm from './../components/shortTerm';
 import LongTerm from './../components/longTerm';
 
 const reducers = combineReducers({
@@ -23,6 +24,7 @@ export default (
     <Router history={browserHistory}>
       <Route path="/simple-visualization/" component={Root}>
         <IndexRoute component={NewStroke} />
+        <Route path="short" component={ShortTerm} />
         <Route path="long" component={LongTerm} />
         <Route path="*" component={NewStroke} />
       </Route>

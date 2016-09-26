@@ -109,7 +109,7 @@ export default connect(state => {
       componentData: dataOne,
       max: getMax(Math.max(...dataOne))
     }, {
-      list: ['不耐受AGGRE', 'PLT總潛力', 'SVD', 'ICAS', 'Age>75', 'PAD', 'AF', 'HPN'],
+      list: [(state.long.type === 0 ? '總不耐受' : '不耐受' + typeName), 'PLT總潛力', 'SVD', 'ICAS', 'Age>75', 'PAD', 'AF', 'HPN'],
       componentData: dataTwo,
       max: getMax(Math.max(...dataTwo)),
       typeName: typeName

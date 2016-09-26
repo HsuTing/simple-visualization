@@ -26,18 +26,25 @@ class NewStroke extends React.Component {
 
 export default connect(state => {
   const data = state.data.choiceData;
-  const dataOne = data[17] === undefined ? [] : [(data[17] * state.data.choiceRatio * (1 - 0.07)) || 0];
-  const dataTwo = [];
+  const choiceRatio = state.data.choiceRatio;
+  const dataOne = [
+    data[17] * choiceRatio * (1 - 0.07)
+  ];
+  const max = (data[4] - data[17] * choiceRatio * (1 - 0.07) * 0.05 - data[9] * (data[17] * 0.25 * 0.59)) +
+    (data[5] - data[10] * (data[17] * 0.25 * 0.59));
+  const dataTwo = [1, 0.5, 0.38, 0.3, 0.41, 0.15, 0.05, 0].map(ratio => {
+    return max * ratio;
+  });
 
   return {
     data: [{
       list: ['ASA病患數'],
       componentData: dataOne,
-      max: getMax(Math.max(dataOne))
+      max: getMax(Math.max(...dataOne))
     }, {
-      list: ['HPN', 'AF', 'PAD', 'Age>75', 'ICAS', 'SVD', 'PLT總潛力', '不耐受ASA'],
+      list: ['不耐受ASA', 'PLT總潛力', 'SVD', 'ICAS', 'Age>75', 'PAD', 'AF', 'HPN'],
       componentData: dataTwo,
-      max: getMax(Math.max(dataTwo))
+      max: getMax(Math.max(...dataTwo))
     }]
   };
 })(NewStroke);
