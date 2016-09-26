@@ -28,12 +28,6 @@ export const ADD_DATA = 'ADD_DATA';
 export const addData = (action, dispatch) => {
   const file = action.data;
 
-  // check type
-  if(file.type !== 'text/csv') {
-    alert('type error');
-    return;
-  }
-
   // read data
   const reader = new FileReader();
   reader.readAsText(file, 'utf-8');
