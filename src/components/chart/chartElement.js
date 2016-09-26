@@ -11,14 +11,14 @@ class ChartElement extends React.Component {
     const outputData = String(Math.round(data));
 
     return (
-      <g style={{transform: 'translate(130px, calc(0px + ' + y + 'px))'}}>
+      <g style={{transform: 'translate(140px, calc(0px + ' + y + 'px))'}}>
         <text x="-10"
               y={(CHART_HEIGHT - 20) / 2 + 15}
               textAnchor="end"
         >{name}</text>
         <rect x="0"
               y={(CHART_HEIGHT - 20) / 2}
-              style={{width: 'calc(calc(100% - 130px) * ' + (ratio) + ')',
+              style={{width: 'calc(calc(100% - 140px) * ' + (ratio) + ')',
                       height: '18.5px',
                       opacity: ratio < 0.3 ? 0.3 : ratio,
                       fill: MAIN_COLOR}}
@@ -30,7 +30,7 @@ class ChartElement extends React.Component {
                       opacity: radium.getState(this.state, 'chartElement', ':hover') ? 1 : 0}}
         >{outputData}</text>
         <rect key="chartElement"
-              x="-130"
+              x="-140"
               y={(CHART_HEIGHT - 20) / 2}
               style={[style, {width: '100%',
                       height: CHART_HEIGHT + 'px',

@@ -6,6 +6,7 @@ import {combineReducers, createStore} from 'redux';
 import {Provider} from 'react-redux';
 
 import reducerData from './../reducers/data';
+import reducerShort from './../reducers/short';
 import reducerLong from './../reducers/long';
 
 import Root from './../components/root';
@@ -16,6 +17,7 @@ import LongTerm from './../components/longTerm';
 
 const reducers = combineReducers({
   data: reducerData,
+  short: reducerShort,
   long: reducerLong
 });
 export const store = createStore(reducers);
