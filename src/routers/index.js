@@ -8,7 +8,8 @@ import {Provider} from 'react-redux';
 import reducerData from './../reducers/data';
 
 import Root from './../components/root';
-import Index from './../components/index';
+import NewStroke from './../components/newStroke';
+import LongTerm from './../components/longTerm';
 
 const reducers = combineReducers({
   data: reducerData
@@ -19,8 +20,9 @@ export default (
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/simple-visualization/" component={Root}>
-        <IndexRoute component={Index} />
-        <Route path="*" component={null} />
+        <IndexRoute component={NewStroke} />
+        <Route path="long" component={LongTerm} />
+        <Route path="*" component={NewStroke} />
       </Route>
     </Router>
   </Provider>
