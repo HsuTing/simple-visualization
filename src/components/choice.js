@@ -6,7 +6,6 @@ import {connect} from 'react-redux';
 import {CenterCenter} from 'hsuting/lib/layout';
 
 import {MAIN_COLOR} from './../style';
-import Upload from './upload';
 
 import {chooseData, chooseRatio} from './../actions/data';
 
@@ -36,10 +35,6 @@ class Choice extends React.Component {
                           background: MAIN_COLOR}, CenterCenter]}
       >
         <div>
-          <div style={[style, CenterCenter]}>
-            上傳資料：
-            <Upload />
-          </div>
           <div style={[style, CenterCenter]}>
             選擇醫院：
             <select onChange={this.chooseData.bind(this)}>

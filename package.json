@@ -4,7 +4,7 @@
   "description": "simple visualization",
   "scripts": {
     "init": "rm -rf ./lib && babel src --out-dir lib && gulp",
-    "build": "rm -rf ./lib && babel src --out-dir lib",
+    "build": "rm -rf ./lib && babel src --out-dir lib -w",
     "dev-server": "webpack-dev-server --content-base src --hot --progress --inline",
     "prod": "NODE_ENV=1 webpack && gulp prod",
     "eslint": "eslint --cache ./ --ext .js"
@@ -30,6 +30,7 @@
     "babel-preset-latest": "^6.14.0",
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
+    "d3-dsv": "^1.0.3",
     "eslint": "^3.6.0",
     "eslint-config-google": "^0.6.0",
     "eslint-plugin-react": "^6.3.0",
@@ -41,7 +42,6 @@
     "webpack-dev-server": "^1.16.1"
   },
   "dependencies": {
-    "csv": "^1.1.0",
     "radium": "^0.18.1",
     "radium-normalize": "^2.0.5",
     "react": "^15.3.2",

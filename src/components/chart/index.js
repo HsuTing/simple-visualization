@@ -6,6 +6,9 @@ import {CHART_HEIGHT} from './../../style';
 import ChartElement from './chartElement';
 
 export default class Chart extends React.Component {
+  onClick() {
+  }
+
   render() {
     const {componentData, max, list} = this.props;
 
@@ -15,14 +18,14 @@ export default class Chart extends React.Component {
                    margin: '50px 20px'}}
       >
         {componentData.map((data, index) => {
-          const ratio = data === undefined ? 0 : data / max;
-
           return (
             <ChartElement key={index}
                           name={list[index]}
-                          ratio={data === undefined ? 0 : data / max}
+                          ratio={isNaN(data / max) ? 0 : data / max}
                           y={CHART_HEIGHT * index}
                           data={data}
+                          style={{cursor: this.props.onClick !== undefined ? 'pointer' : 'initial'}}
+                          onClick={(this.props.onClick || this.onClick).bind(this, index)}
             />
           );
         })}

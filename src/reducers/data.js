@@ -1,26 +1,31 @@
 'use strict';
 
 import * as Action from './../actions/data';
+import data from './../data';
+
+// format data
+const formatData = data => {
+  return data.map(item => Object.keys(item).map((key, index) => {
+    const value = item[key];
+    if(index >= 2)
+      return value === '' ? 0 : Number(value);
+    return value;
+  }));
+};
+const initialData = formatData(data);
 
 const initialState = {
-  data: [],
-  hospital: [],
+  data: initialData,
+  hospital: initialData.map((d, index) => {
+    return (index + 1) + '. ' + d[1];
+  }),
   ratio: [0.1, 0.5],
-  choiceData: [],
+  choiceData: [...initialData[0]],
   choiceRatio: 0.1
 };
 
 export default (state = initialState, action) => {
   switch(action.type) {
-    case Action.ADD_DATA:
-      return Object.assign({}, state, {
-        data: [...action.data],
-        hospital: action.data.map((d, index) => {
-          return (index + 1) + '. ' + d[1];
-        }),
-        choiceData: [...action.data[0]]
-      });
-
     case Action.CHOOSE_DATA:
       return Object.assign({}, state, {
         choiceData: [...state.data[action.index]]
