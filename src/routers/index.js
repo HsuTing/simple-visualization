@@ -10,6 +10,7 @@ import reducerLong from './../reducers/long';
 
 import Root from './../components/root';
 import NewStroke from './../components/newStroke';
+import RelapseStroke from './../components/relapseStroke';
 import ShortTerm from './../components/shortTerm';
 import LongTerm from './../components/longTerm';
 
@@ -24,6 +25,7 @@ export default (
     <Router history={browserHistory}>
       <Route path="/simple-visualization/" component={Root}>
         <IndexRoute component={NewStroke} />
+        <Route path="relapse" component={RelapseStroke} />
         <Route path="short" component={ShortTerm} />
         <Route path="long" component={LongTerm} />
         <Route path="*" component={NewStroke} />
