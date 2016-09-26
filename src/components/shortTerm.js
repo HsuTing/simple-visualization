@@ -44,7 +44,7 @@ export default connect(state => {
   const data = state.data.choiceData;
   const choiceRatio = state.data.choiceRatio;
   const save = data[17] * 0.25 * 0.59;
-  const dataOne = [
+  let dataOne = [
     data[2] - save * data[7],
     0,
     0,
@@ -122,11 +122,12 @@ export default connect(state => {
       typeName = '總病患數';
       break;
   }
+  dataOne = [countTotal(dataOne)].concat(dataOne);
 
   return {
     data: [{
       list: ['總患病數', 'AGGRE.', 'ASA', 'CLO.', 'TICLO.', 'ASA+CLO.'],
-      componentData: [countTotal(dataOne)].concat(dataOne),
+      componentData: dataOne,
       max: getMax(Math.max(...dataOne))
     }, {
       list: [(state.short.type === 0 ? '總不耐受' : '不耐受' + typeName), 'PLT總潛力', 'SVD', 'ICAS', 'Age>75', 'PAD', 'AF', 'HPN'],
