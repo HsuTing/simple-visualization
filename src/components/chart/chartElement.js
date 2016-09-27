@@ -3,11 +3,11 @@
 import React from 'react';
 import radium from 'radium';
 
-import {MAIN_COLOR, CHART_HEIGHT} from './../../style';
+import {CHART_HEIGHT} from './../../style';
 
 class ChartElement extends React.Component {
   render() {
-    const {data, name, ratio, y, onClick, style} = this.props;
+    const {data, name, ratio, y, onClick, style, color} = this.props;
     const outputData = String(Math.round(data));
 
     return (
@@ -21,21 +21,20 @@ class ChartElement extends React.Component {
               style={{width: 'calc(calc(100% - 140px) * ' + (ratio) + ')',
                       height: '18.5px',
                       opacity: ratio < 0.3 ? 0.3 : ratio,
-                      fill: MAIN_COLOR}}
+                      fill: color}}
         />
         <text x="5"
               y="15"
               y={(CHART_HEIGHT - 20) / 2 + 15}
-              style={{fill: ratio > 0.5 ? 'white' : 'black',
-                      opacity: radium.getState(this.state, 'chartElement', ':hover') ? 1 : 0}}
+              style={{fill: 'black',
+                      opacity: 1}}
         >{outputData}</text>
         <rect key="chartElement"
               x="-140"
               y={(CHART_HEIGHT - 20) / 2}
               style={[style, {width: '100%',
                       height: CHART_HEIGHT + 'px',
-                      opacity: '0',
-                      ':hover': {}}]}
+                      opacity: '0'}]}
               onClick={onClick}
         />
       </g>

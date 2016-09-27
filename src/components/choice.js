@@ -52,7 +52,7 @@ class Choice extends React.Component {
               {componentData.ratio.map((ratio, index) => {
                 return (
                   <option key={index}
-                  >{ratio * 100 + '%'}</option>
+                  >{Math.ceil(ratio * 100) + '%'}</option>
                 );
               })}
             </select>

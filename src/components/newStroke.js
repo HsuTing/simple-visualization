@@ -8,6 +8,7 @@ import {Grid, Cell as cell} from 'hsuting/lib/layout';
 import getMax from './../getMax';
 
 import Chart from './chart/index';
+import Explain from './explain';
 
 class NewStroke extends React.Component {
   render() {
@@ -15,6 +16,7 @@ class NewStroke extends React.Component {
       <StyleRoot style={Grid}>
         <div style={cell([6, 4, 4])}>
           <Chart {...this.props.data[0]} />
+          <Explain>新發中風住院，Pletaal處方潛力來自不耐受ASA的患者，亦即原來要開CLO.或TICLO.，有機會改開Pletaal</Explain>
         </div>
         <div style={cell([6, 4, 4])}>
           <Chart {...this.props.data[1]} />

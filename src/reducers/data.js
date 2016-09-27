@@ -14,14 +14,18 @@ const formatData = data => {
 };
 const initialData = formatData(data);
 
+const ratios = [];
+for(let i = 0; i < 15; i++) {
+  ratios.push(i / 100);
+}
 const initialState = {
   data: initialData,
   hospital: initialData.map((d, index) => {
-    return (index + 1) + '. ' + d[1];
+    return (index + 1) + '. ' + d[0] + ' ' + d[1];
   }),
-  ratio: [0.05, 0.1, 0.12, 0.2],
+  ratio: ratios,
   choiceData: [...initialData[0]],
-  choiceRatio: 0.05
+  choiceRatio: ratios[0]
 };
 
 export default (state = initialState, action) => {

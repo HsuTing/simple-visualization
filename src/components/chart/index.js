@@ -2,7 +2,8 @@
 
 import React from 'react';
 
-import {CHART_HEIGHT} from './../../style';
+import {CHART_HEIGHT, MAIN_COLOR} from './../../style';
+
 import ChartElement from './chartElement';
 
 export default class Chart extends React.Component {
@@ -10,7 +11,7 @@ export default class Chart extends React.Component {
   }
 
   render() {
-    const {componentData, max, list} = this.props;
+    const {componentData, max, list, onClick, color} = this.props;
 
     return (
       <svg style={{width: 'calc(100% - 40px)',
@@ -24,7 +25,8 @@ export default class Chart extends React.Component {
                           ratio={isNaN(data / max) ? 0 : data / max}
                           y={CHART_HEIGHT * index}
                           data={data}
-                          style={{cursor: this.props.onClick !== undefined ? 'pointer' : 'initial'}}
+                          style={{cursor: onClick !== undefined ? 'pointer' : 'initial'}}
+                          color={color === undefined ? MAIN_COLOR : color[index] || MAIN_COLOR}
                           onClick={(this.props.onClick || this.onClick).bind(this, index)}
             />
           );

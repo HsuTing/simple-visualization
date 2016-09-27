@@ -5,10 +5,13 @@ import {connect} from 'react-redux';
 import {StyleRoot} from 'radium';
 import {Grid, Cell as cell} from 'hsuting/lib/layout';
 
+import {MAIN_COLOR} from './../style';
+
 import getMax from './../getMax';
 import countTotal from './../countTotal';
 
 import Chart from './chart/index';
+import Explain from './explain';
 
 import {chooseType} from './../actions/short';
 
@@ -31,6 +34,7 @@ class ShortTerm extends React.Component {
           <Chart {...this.props.data[0]}
                  onClick={this.chooseType.bind(this)}
           />
+          <Explain>出院短期，Pletaal處方潛力來自不耐受出院Antiplatelets患者。此時，患者較多不耐受CLO./TICLO.且應當多數可轉換成Pletaal；若患者不耐受ASA，Pletaal當與CLO./TICLO.競爭。</Explain>
         </div>
         <div style={cell([6, 4, 4])}>
           <Chart {...this.props.data[1]} />
@@ -123,17 +127,24 @@ export default connect(state => {
       break;
   }
   dataOne = [countTotal(dataOne)].concat(dataOne);
+  const colors = [MAIN_COLOR, '#2962FF', '#AEEA00', '#DD2C00', '#AA00FF', '#0091EA'];
+  const childColor = [];
+  for(let i = 0; i < 8; i++) {
+    childColor.push(colors[state.short.type]);
+  }
 
   return {
     data: [{
       list: ['總患病數', 'AGGRE.', 'ASA', 'CLO.', 'TICLO.', 'ASA+CLO.'],
+      color: colors,
       componentData: dataOne,
       max: getMax(Math.max(...dataOne))
     }, {
       list: [(state.short.type === 0 ? '總不耐受' : '不耐受' + typeName), 'PLT總潛力', 'SVD', 'ICAS', 'Age>75', 'PAD', 'AF', 'HPN'],
+      color: childColor,
       componentData: dataTwo,
       max: getMax(Math.max(...dataTwo)),
-      typeName: typeName
+      typeName
     }]
   };
 })(ShortTerm);
