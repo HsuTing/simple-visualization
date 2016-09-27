@@ -1,5 +1,5 @@
 var gulp = require('gulp');
-var renderPug = require('./../../milk-cat').renderPug;
+var renderPug = require('tools-manager').renderPug;
 
 var router = require('./../lib/routers/index.js');
 

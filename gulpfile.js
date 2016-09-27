@@ -3,7 +3,7 @@ var gulp = require('gulp');
 var gulpRequireTasks = require('gulp-require-tasks');
 
 gulpRequireTasks({
-  path: path.resolve(process.cwd(), './../milk-cat/gulp-tasks')
+  path: path.resolve(process.cwd(), './node_modules/tools-manager/gulp-tasks')
 });
 
 gulpRequireTasks({

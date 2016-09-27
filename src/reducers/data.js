@@ -19,9 +19,9 @@ const initialState = {
   hospital: initialData.map((d, index) => {
     return (index + 1) + '. ' + d[1];
   }),
-  ratio: [0.1, 0.5],
+  ratio: [0.05, 0.1, 0.12, 0.2],
   choiceData: [...initialData[0]],
-  choiceRatio: 0.1
+  choiceRatio: 0.05
 };
 
 export default (state = initialState, action) => {
