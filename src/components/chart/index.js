@@ -22,7 +22,7 @@ export default class Chart extends React.Component {
           return (
             <ChartElement key={index}
                           name={list[index]}
-                          ratio={isNaN(data / max) ? 0 : data / max}
+                          ratio={isNaN(data / max) ? 0 : (max === 0 ? 0 : Math.abs(data) / Math.abs(max))}
                           y={CHART_HEIGHT * index}
                           data={data}
                           style={{cursor: onClick !== undefined ? 'pointer' : 'initial'}}
