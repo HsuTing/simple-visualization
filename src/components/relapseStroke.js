@@ -28,7 +28,7 @@ class RelapseStroke extends React.Component {
     return (
       <StyleRoot style={Grid}>
         <div style={cell([12, 8, 4])}>
-            <div style={{padding: '40px 0px 0px',
+            <div style={{padding: '20px 0px 0px',
                          textAlign: 'center'}}
             >{'資料類別：' + this.props.data[1].typeName}</div>
           </div>
@@ -48,7 +48,6 @@ class RelapseStroke extends React.Component {
 
 export default connect(state => {
   const data = state.data.choiceData;
-  const choiceRatio = state.data.choiceRatio;
   const save = data[17] * 0.25 * 0.59;
   const dataOne = [
     data[17] * 0.25,

@@ -24,7 +24,8 @@ class Choice extends React.Component {
 
   render() {
     const style = {
-      padding: '5px 0px'
+      display: 'inline-block',
+      padding: '5px 20px'
     };
     const {componentData} = this.props;
 
@@ -35,7 +36,7 @@ class Choice extends React.Component {
                           background: MAIN_COLOR}, CenterCenter]}
       >
         <div>
-          <div style={[style, CenterCenter]}>
+          <div style={style}>
             選擇醫院：
             <select onChange={this.chooseData.bind(this)}>
               {componentData.hospital.map((data, index) => {
@@ -46,7 +47,7 @@ class Choice extends React.Component {
               })}
             </select>
           </div>
-          <div style={[style, CenterCenter]}>
+          <div style={style}>
             住院患者處方ASA+CLO.比例：
             <select onChange={this.chooseRatio.bind(this)}>
               {componentData.ratio.map((ratio, index) => {

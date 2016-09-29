@@ -30,9 +30,9 @@ export default connect(state => {
   const data = state.data.choiceData;
   const choiceRatio = state.data.choiceRatio;
   const dataOne = [
-    data[17] * choiceRatio * (1 - 0.07)
+    data[17] * 0.75 * (1 - 0.07)
   ];
-  const max = (data[4] - data[17] * choiceRatio * (1 - 0.07) * 0.05 - data[9] * (data[17] * 0.25 * 0.59)) +
+  const max = (data[4] - data[17] * 0.75 * (1 - 0.07) * choiceRatio - data[9] * (data[17] * 0.25 * 0.59)) +
     (data[5] - data[10] * (data[17] * 0.25 * 0.59));
   const dataTwo = [1, 0.5, 0.38, 0.3, 0.41, 0.15, 0.05, 0].map(ratio => {
     return max * ratio;

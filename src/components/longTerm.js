@@ -24,7 +24,7 @@ class LongTerm extends React.Component {
     return (
       <StyleRoot style={Grid}>
         <div style={cell([12, 8, 4])}>
-          <div style={{padding: '40px 0px 0px',
+          <div style={{padding: '20px 0px 0px',
                        textAlign: 'center'}}
           >{'資料類別：' + this.props.data[1].typeName}</div>
         </div>

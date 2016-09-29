@@ -16,7 +16,7 @@ export default class Chart extends React.Component {
     return (
       <svg style={{width: 'calc(100% - 40px)',
                    height: 'calc(' + CHART_HEIGHT + 'px * ' + componentData.length + ')',
-                   margin: '50px 20px'}}
+                   margin: '20px'}}
       >
         {componentData.map((data, index) => {
           return (

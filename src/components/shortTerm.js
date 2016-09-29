@@ -26,7 +26,7 @@ class ShortTerm extends React.Component {
     return (
       <StyleRoot style={Grid}>
         <div style={cell([12, 8, 4])}>
-          <div style={{padding: '40px 0px 0px',
+          <div style={{padding: '20px 0px 0px',
                        textAlign: 'center'}}
           >{'資料類別：' + this.props.data[1].typeName}</div>
         </div>
@@ -53,10 +53,10 @@ export default connect(state => {
     0,
     0,
     data[5] - save * data[10],
-    data[17] * choiceRatio * (1 - 0.07) * 0.05
+    data[17] * 0.75 * (1 - 0.07) * choiceRatio
   ];
   dataOne[2] = data[4] - dataOne[4] - save * data[9];
-  dataOne[1] = data[17] * choiceRatio * (1 - 0.07) - countTotal(dataOne);
+  dataOne[1] = data[17] * 0.75 * (1 - 0.07) - countTotal(dataOne);
   const ratios = [
     [1, 0.5, 0.38, 0.3, 0.41, 0.15, 0.05, 0],
     [1, 1, 0.38, 0.3, 0.41, 0.15, 0.05, 0]
