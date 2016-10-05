@@ -36,7 +36,7 @@ class RelapseStroke extends React.Component {
           <Chart {...this.props.data[0]}
                  onClick={this.chooseType.bind(this)}
           />
-          <Explain>復發中風住院死亡率高達41%，Pletaal處方潛力來自ASA無效的存活患者，亦即原來要開CLO.或TICLO.，有機會改開Pletaal</Explain>
+          <Explain>復發中風住院死亡率高達41%，但有82%會調整抗血小板劑，大部分存活者有換或加Pletaal的機會</Explain>
         </div>
         <div style={cell([6, 4, 4])}>
           <Chart {...this.props.data[1]} />

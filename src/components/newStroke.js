@@ -16,7 +16,7 @@ class NewStroke extends React.Component {
       <StyleRoot style={Grid}>
         <div style={cell([6, 4, 4])}>
           <Chart {...this.props.data[0]} />
-          <Explain>新發中風住院死亡率高達41%，但有82%會調整抗血小板劑，大部分存活者有換或加Pletaal的機會</Explain>
+          <Explain>新發中風住院，Pletaal處方潛力來自不耐受ASA的患者，亦即原來要開CLO.或TICLO.，有機會改開Pletaal</Explain>
         </div>
         <div style={cell([6, 4, 4])}>
           <Chart {...this.props.data[1]} />
