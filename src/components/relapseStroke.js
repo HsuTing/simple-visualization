@@ -16,7 +16,7 @@ import {chooseType} from './../actions/relapse';
 
 class RelapseStroke extends React.Component {
   chooseType(index) {
-    if(index === 0 || index === 1)
+    if(index === 1)
       return;
 
     chooseType({
@@ -57,12 +57,57 @@ export default connect(state => {
     save * data[9],
     save * data[10]
   ];
-  let typeName = ['AGGRE.', 'ASA', 'AGGRE.', 'ASA', 'CLO.', 'TICLO.'][state.relapse.type];
-  const max = state.relapse.type === 3 ? save * data[10] * data[9] : 0;
-  const dataTwo = [1, 0.5, 0.38, 0.3, 0.41, 0.15, 0.05, 0].map(ratio => {
-    return max * ratio;
-  });
-  const colors = [MAIN_COLOR, '#2962FF', '#AEEA00', '#DD2C00', '#AA00FF'];
+  let typeName = ['總病患數', 'ASA', 'AGGRE.', 'ASA', 'CLO.', 'TICLO.'][state.relapse.type];
+  const ratios = [
+    [1, 0.5, 0.38, 0.3, 0.41, 0.15, 0.05, 0],
+    [1, 1, 0.38, 0.3, 0.41, 0.15, 0.05, 0]
+  ];
+  let dataTwo = [];
+  switch(state.relapse.type) {
+    case 2:
+      dataTwo = ratios[0].map(ratio => {
+        return save * data[7] * 0.82 * ratio;
+      });
+      break;
+
+    case 3:
+      dataTwo = ratios[0].map(ratio => {
+        return save * data[8] * 0.82 * ratio;
+      });
+      break;
+
+    case 4:
+      dataTwo = ratios[1].map(ratio => {
+        return save * data[9] * 0.82 * ratio;
+      });
+      break;
+
+    case 5:
+      dataTwo = ratios[1].map(ratio => {
+        return save * data[10] * 0.82 * ratio;
+      });
+      break;
+
+    default:
+      dataTwo = [0, 0, 0, 0, 0, 0, 0, 0].map((item, itemIndex) => {
+        dataOne.slice(2).forEach((d, index) => {
+          switch(index) {
+            case 0:
+            case 1:
+              item += d * 0.82 * ratios[0][itemIndex];
+              break;
+
+            case 2:
+            case 3:
+              item += d * 0.82 * ratios[1][itemIndex];
+              break;
+          }
+        });
+        return item;
+      });
+      break;
+  }
+  const colors = [MAIN_COLOR, '#2962FF', '#AEEA00', '#DD2C00', '#AA00FF', '#D50000'];
   const childColor = [];
   for(let i = 0; i < 8; i++) {
     childColor.push(colors[state.relapse.type]);
@@ -75,7 +120,7 @@ export default connect(state => {
       componentData: dataOne,
       max: getMax(Math.max(...dataOne))
     }, {
-      list: [typeName + '換藥數', 'PLT總潛力', 'SVD', 'ICAS', 'Age>75', 'PAD', 'AF', 'HPN'],
+      list: [typeName === '總病患數' ? '總換藥人數' : typeName + '換藥數', 'PLT總潛力', 'SVD', 'ICAS', 'Age>75', 'PAD', 'AF', 'HPN'],
       color: childColor,
       componentData: dataTwo,
       max: getMax(Math.max(...dataTwo)),
