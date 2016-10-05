@@ -101,6 +101,9 @@ export default connect(state => {
             case 3:
               item += d * 0.82 * ratios[1][itemIndex];
               break;
+
+            default:
+              break;
           }
         });
         return item;

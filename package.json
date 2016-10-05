@@ -7,7 +7,7 @@
     "build": "rm -rf ./lib && babel src --out-dir lib -w",
     "dev-server": "webpack-dev-server --content-base src --hot --progress --inline",
     "prod": "NODE_ENV=1 webpack && NODE_ENV=1 gulp static:render",
-    "eslint": "eslint --cache ./ --ext .js",
+    "eslint": "eslint --cache ./ --ext .js"
   },
   "pre-commit": [
     "prod",
