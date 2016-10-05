@@ -80,7 +80,7 @@ export default connect(state => {
 
     case 3:
       dataTwo = ratios[1].map(ratio => {
-        return dataOne[4] * 0.08 * ratio;
+        return dataOne[2] * 0.08 * ratio;
       });
       typeName = 'CLO.';
       break;
